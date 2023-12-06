@@ -17,15 +17,15 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Comment {
     @Id
-    UUID id;
+    private UUID id;
     @JoinColumn(nullable = false)
     @ManyToOne
-    Task task;
-    @JoinColumn(nullable = false)
+    private Task task;
+    @JoinColumn(nullable = false, name = "author")
     @ManyToOne
-    User author;
+    private User author;
     @Column(nullable = false)
-    String text;
+    private String text;
     @Column(nullable = false)
-    Date createdAt;
+    private Date createdAt;
 }

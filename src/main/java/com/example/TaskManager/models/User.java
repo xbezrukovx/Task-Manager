@@ -16,9 +16,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class User {
     @Id
-    UUID id;
+    private UUID id;
     @Column(nullable = false)
-    String email;
+    private String email;
     @Column(nullable = false)
-    String password;
+    private String password;
 }

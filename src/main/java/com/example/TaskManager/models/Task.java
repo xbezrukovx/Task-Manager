@@ -18,20 +18,20 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Task {
     @Id
-    UUID id;
+    private UUID id;
     @Column(nullable = false)
-    String title;
+    private String title;
     @Column(nullable = false)
-    String description;
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    TaskStatus status;
+    private String description;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    TaskPriority priority;
+    private TaskStatus status;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TaskPriority priority;
     @JoinColumn(nullable = false, name = "author_id")
     @ManyToOne
-    User author;
+    private User author;
     @JoinColumn(name = "responsible_id")
     @ManyToOne
     User responsible;
