@@ -18,6 +18,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Task {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(nullable = false)
     private String title;
@@ -35,5 +36,4 @@ public class Task {
     @JoinColumn(name = "responsible_id")
     @ManyToOne
     User responsible;
-
 }

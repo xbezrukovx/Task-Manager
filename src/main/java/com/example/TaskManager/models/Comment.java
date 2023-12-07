@@ -17,6 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Comment {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @JoinColumn(nullable = false)
     @ManyToOne

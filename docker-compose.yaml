@@ -1,0 +1,29 @@
+version: '3.5'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: bestuser
+      POSTGRES_DB: task_manager
+    networks:
+      - backend
+
+  task-service:
+    image: task-manager:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      DB_USER: root
+      DB_PASS: bestuser
+      DB_NAME: task_manager
+      DB_HOST: postgres
+      DB_PORT: 5432
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

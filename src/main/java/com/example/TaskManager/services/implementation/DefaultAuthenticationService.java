@@ -1,4 +1,4 @@
-package com.example.TaskManager.services;
+package com.example.TaskManager.services.implementation;
 
 import com.example.TaskManager.dto.authentication.request.UserAuthenticateDTO;
 import com.example.TaskManager.dto.authentication.response.JWTokenDTO;
