@@ -45,10 +45,16 @@ public class DefaultTaskService implements TaskService {
     }
 
     public TaskShortDTO getTask(UUID taskId) {
-        return objectMapper.convertValue(
+        Task task = getTaskFromDB(taskId);
+        TaskShortDTO response = objectMapper.convertValue(
                 getTaskFromDB(taskId),
                 TaskShortDTO.class
         );
+        // Sets an author and a responsible user.
+        response.setResponsibleId(task.getResponsible().getId());
+        response.setAuthorId(task.getAuthor().getId());
+
+        return response;
     }
 
     @Override
@@ -72,7 +78,12 @@ public class DefaultTaskService implements TaskService {
         return taskRepository
                 .findByAuthor(userId)
                 .stream()
-                .map(t -> objectMapper.convertValue(t, TaskShortDTO.class))
+                .map(t -> {
+                    TaskShortDTO task = objectMapper.convertValue(t, TaskShortDTO.class);
+                    task.setAuthorId(t.getAuthor().getId());
+                    task.setResponsibleId(t.getResponsible().getId());
+                    return task;
+                })
                 .collect(Collectors.toList());
     }
 

@@ -14,6 +14,6 @@ public class TaskShortDTO {
     private String description;
     private TaskStatus status;
     private TaskPriority priority;
-    private User author;
-    private User responsible;
+    private UUID authorId;
+    private UUID responsibleId;
 }
